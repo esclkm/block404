@@ -21,10 +21,11 @@ defined('COT_CODE') or die('Wrong URL.');
 global $rep_path,$del_path;
 $db_block404 = !empty($db_block404) ? $db_block404 : $db_x.'block404';
 
-$sear_path = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; 
-$del_path = $cfg['mainurl'].((substr($cfg['mainurl'], -1) == '/') ? '' : '/');
+//$sear_path = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; 
+//$del_path = $cfg['mainurl'].((substr($cfg['mainurl'], -1) == '/') ? '' : '/');
 
-$rep_path = str_replace($del_path, '', $sear_path);
+//$rep_path = str_replace($del_path, '', $sear_path);
+$rep_path = $_SERVER['REQUEST_URI'];
 // удаляем старое
 $db->delete($db_block404, "block404_date < ".(int)$sys['now']." AND block404_date <> 0");
 

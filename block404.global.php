@@ -21,10 +21,11 @@ defined('COT_CODE') or die('Wrong URL.');
 global $rep_path,$del_path;
 
 $rep_path = preg_replace('/(.+)\?(.+)/', '$1', $rep_path);
+$rep_path = preg_replace('/\/?(.+)/', '$1', $rep_path);
 if ($_GET['e']=='page' && empty($_GET['m']) && cot_plugin_active('urleditor'))
 {
 	$path = cot_url('page', 'c='.$_GET['c'].'&al='.$_GET['al'].'&id='.$_GET['id']);
-
+	$path = preg_replace('/\/?(.+)/', '$1', $path);
 	if ($path != $rep_path) 
 	{
 		$_GET['c'] = 'system';
